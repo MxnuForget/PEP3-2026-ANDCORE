@@ -2,4 +2,4 @@ ANDCORE
 Nombre:Marcelo Andres
 Apellido:Gantier Rodriguez
 Grupo:ORION X
-Rol o responsabilidad principal:INVESTIGACIÓN Y DESARROLLO
+Rol o responsabilidad principal:Dashware
