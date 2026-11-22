@@ -1,234 +1,113 @@
-# 🌌 ANDCORE
+# ANDCORE 🌌
+## Observatorio estadístico de eventos astronómicos visibles desde Cochabamba
 
-**Observatorio Estadístico: Predicción de Eventos Astronómicos Visibles desde Cochabamba**
-
-Proyecto Final de *Probabilidad y Estadística* — Ingeniería en Sistemas
-Universidad Privada Franz Tamayo (Unifranz) · Cochabamba, Bolivia · 2026
-Docente: Diego Patrick Cardenas Sejas
-
-> 🚧 **Estado del proyecto:** en desarrollo. Este README se actualiza a medida que avanzamos.
+Proyecto de la materia de Probabilidad y Estadística — Ingeniería en Sistemas  
+Universidad Privada Franz Tamayo (Unifranz) · Cochabamba, Bolivia · 2026  
+Grupo: **ORION X**
 
 ---
 
-## 📖 ¿Qué es ANDCORE?
+## ¿De qué trata el proyecto?
 
-ANDCORE es una estación de observación del cielo nocturno hecha con una **Raspberry Pi** y una cámara, que combina:
+ANDCORE busca desarrollar un observatorio que permita estudiar eventos astronómicos visibles desde Cochabamba. La idea es reunir información del cielo, consultar datos de fuentes abiertas y utilizar herramientas estadísticas para analizar las condiciones de observación.
 
-1. **Datos propios:** imágenes y video del cielo de Cochabamba, procesados con visión por computadora para detectar posibles meteoros y satélites.
-2. **Datos abiertos:** información de la **NASA** (asteroides cercanos a la Tierra) y la **NOAA** (actividad geomagnética, índice Kp).
-3. **Estadística y probabilidad:** con todo lo anterior estimamos *qué tan probable es ver un evento astronómico desde Cochabamba en una fecha determinada*, tomando en cuenta factores locales como la nubosidad y la temporada del año.
+A futuro, el proyecto contempla utilizar una Raspberry Pi con una cámara, procesamiento de imágenes y un panel donde se puedan consultar los resultados. El desarrollo se realizará por etapas, por lo que no todas esas funciones están implementadas todavía.
 
-El resultado final es una predicción entendible para cualquier persona, por ejemplo:
+## Avance actual de implementación
 
-> *"Probabilidad de observar la lluvia de meteoros Oriónidas esta semana desde Cochabamba: 70%"*
+En esta etapa se trabajó principalmente en la preparación del equipo Raspberry Pi y en la organización inicial del proyecto.
 
----
-
-## ❓ Problema que resuelve
-
-Hoy, quien quiere observar un fenómeno astronómico en Cochabamba depende de fuentes internacionales genéricas que dicen *cuándo ocurre* el evento, pero no *qué tan probable es verlo desde aquí*. Una lluvia de meteoros puede estar en su pico, pero si la noche está nublada (algo común en la temporada de lluvias, de noviembre a marzo) o hay mucha luz en la ciudad, la experiencia cambia por completo.
-
-Además, en Unifranz no existen antecedentes de proyectos estudiantiles que unan datos astronómicos reales con métodos estadísticos. ANDCORE busca ser ese primer antecedente.
-
-### ¿A quién le sirve?
-
-- **Estudiantes y aficionados a la astronomía** que quieren saber cuándo salir a observar.
-- **Colegios y universidades**, como recurso didáctico.
-- **Radioaficionados, aviación local y agricultura de precisión**, sensibles a tormentas geomagnéticas.
-- **Turismo local**, para promocionar noches de observación en zonas como el Parque Tunari o el Cerro San Pedro.
-
----
-
-## 🎯 Objetivos
-
-1. Capturar imágenes del cielo nocturno con una Raspberry Pi (meta: al menos 4 horas por noche durante el periodo de prueba).
-2. Detectar eventos (destellos/movimiento compatibles con meteoros o satélites) usando **OpenCV**, y medir los falsos positivos con revisión manual de una muestra.
-3. Integrar la API **NASA NeoWs** y el índice **Kp de la NOAA** en una base de datos histórica.
-4. Aplicar **estadística descriptiva e inferencial** (distribución de frecuencias, intervalos de confianza, regresión) para estimar la probabilidad de observación.
-5. Mostrar los resultados en un **dashboard** claro para usuarios no especializados.
-6. Evaluar la precisión del modelo comparándolo con al menos **3 eventos reales** ocurridos durante el desarrollo.
-
----
-
-## 🧱 Arquitectura general
-
-```
-   ┌───────────────┐      ┌────────────────┐      ┌──────────────────┐
-   │ Cámara + RPi  │ ───▶ │  Detección de  │ ───▶ │                  │
-   │ (cielo real)  │      │  eventos (CV)  │      │   Base de datos  │
-   └───────────────┘      └────────────────┘      │  (CSV / SQLite)  │
-                                                  │                  │
-   ┌───────────────┐      ┌────────────────┐      │                  │
-   │ NASA NeoWs    │ ───▶ │  Recolección   │ ───▶ │                  │
-   │ NOAA Kp       │      │  de APIs       │      └────────┬─────────┘
-   └───────────────┘      └────────────────┘               │
-                                                           ▼
-                                              ┌──────────────────────┐
-                                              │ Análisis estadístico │
-                                              │ (pandas, scipy)      │
-                                              └──────────┬───────────┘
-                                                         ▼
-                                              ┌──────────────────────┐
-                                              │ Dashboard (Streamlit)│
-                                              │ "Probabilidad: 70%"  │
-                                              └──────────────────────┘
-```
-
----
-
-## 🛠️ Tecnologías
-
-| Componente | Tecnología |
-|---|---|
-| Hardware | Raspberry Pi 4 (4GB), módulo de cámara o webcam USB, trípode |
-| Sensor (opcional) | DHT22 o BME280 (temperatura y humedad) |
-| Lenguaje | Python 3 |
-| Visión por computadora | OpenCV |
-| Análisis estadístico | pandas, numpy, scipy |
-| Visualización | matplotlib, Streamlit |
-| Datos abiertos | NASA NeoWs, NOAA SWPC |
-
-Todo el software es **100% código abierto y gratuito**.
-
----
-
-## 💰 Costo estimado del hardware
-
-| Recurso | Costo aprox. (Bs.) |
-|---|---|
-| Raspberry Pi 4 (4GB) | 450 – 600 |
-| Módulo de cámara / webcam nocturna | 150 – 250 |
-| Sensor DHT22 / BME280 (opcional) | 50 – 80 |
-| Tarjeta microSD 32GB | 60 – 90 |
-| Trípode / soporte fijo | 80 – 150 |
-| Cables y accesorios | 50 – 100 |
-| **Total aproximado** | **840 – 1.270** |
-
----
-
-## 📁 Estructura del repositorio
-
-> Estructura planificada; puede cambiar durante el desarrollo.
-
-```
-ANDCORE/
-├── README.md
-├── requirements.txt
-├── captura/           # Scripts de captura con la cámara (Raspberry Pi)
-├── deteccion/         # Algoritmo de detección de eventos con OpenCV
-├── apis/              # Conexión con NASA NeoWs y NOAA Kp
-├── analisis/          # Estadística descriptiva e inferencial
-├── dashboard/         # Panel visual (Streamlit)
-├── datos/             # Datos recolectados (CSV / SQLite)
-└── docs/              # Informe, capturas y anexos
-```
-
----
-
-## ⚙️ Instalación
-
-```bash
-# 1. Clonar el repositorio
-git clone <URL-DEL-REPOSITORIO>
-cd ANDCORE
-
-# 2. Crear un entorno virtual
-python3 -m venv venv
-source venv/bin/activate        # En Windows: venv\Scripts\activate
-
-# 3. Instalar dependencias
-pip install -r requirements.txt
-```
-
-**Dependencias principales:** `opencv-python`, `pandas`, `numpy`, `scipy`, `matplotlib`, `streamlit`, `requests`.
-
-### Claves de API
-
-- **NASA NeoWs:** se puede probar con la clave pública `DEMO_KEY`, pero tiene límites de uso. Se recomienda generar una clave gratuita en [api.nasa.gov](https://api.nasa.gov).
-- **NOAA SWPC:** no requiere clave.
-
----
-
-## ▶️ Uso
-
-> Los scripts se irán agregando conforme avance el desarrollo.
-
-```bash
-# Capturar el cielo (en la Raspberry Pi)
-python captura/capturar.py
-
-# Descargar datos de NASA y NOAA
-python apis/descargar_datos.py
-
-# Ejecutar el análisis estadístico
-python analisis/probabilidad.py
-
-# Abrir el dashboard
-streamlit run dashboard/app.py
-```
-
----
-
-## 📍 Contexto local: ¿por qué Cochabamba?
-
-- **Ubicación:** aprox. 17.4° S, 66.2° O, a unos 2.550 m s. n. m. La altura ayuda: menos atmósfera entre la cámara y el cielo.
-- **Temporada seca (mayo – agosto):** cielos más despejados, ideal para observar.
-- **Temporada de lluvias (noviembre – marzo):** mayor nubosidad, lo que baja la probabilidad de observación. Este es justamente el tipo de factor que el modelo estadístico debe capturar.
-- **Contaminación lumínica:** el centro de la ciudad dificulta la observación; zonas altas y alejadas como el Parque Tunari, Sipe Sipe o Pairumani ofrecen mejores condiciones.
-- **Eventos de interés a lo largo del año:** Oriónidas (octubre), Leónidas (noviembre), Gemínidas (diciembre), Eta Acuáridas (mayo) y Delta Acuáridas (julio – agosto).
-
----
-
-## 🗺️ Hoja de ruta
-
-### Alcance actual (semestre)
-- [ ] Definir roles y distribución de tareas del equipo
-- [ ] Armar la estación (Raspberry Pi + cámara)
-- [ ] Primeras capturas nocturnas de prueba
-- [ ] Script de descarga de datos NASA / NOAA
-- [ ] Detección básica de eventos con OpenCV
-- [ ] Análisis estadístico inicial (frecuencias, intervalos de confianza)
-- [ ] Dashboard simple con la probabilidad de observación
-- [ ] Comparación con al menos 3 eventos reales
-- [ ] Informe final y anexos
-
-### Mejoras futuras
-- Sensor de calidad de cielo (**SQM**) para medir la contaminación lumínica.
-- **Red de mini-observatorios** en distintos puntos de Cochabamba (por ejemplo, ciudad, valle y zona alta) para comparar condiciones.
-- **Machine learning** para mejorar la detección automática de eventos.
-- Alertas automáticas por **Telegram o WhatsApp** a aficionados y colegios.
-- Integración de datos de nubosidad de pronóstico (por ejemplo, desde SENAMHI u otros servicios abiertos).
-- Calendario público de **astroturismo** para Cochabamba y zonas cercanas.
-
----
-
-## 👥 Equipo
-
-| Integrante | Rol | Responsabilidades |
+| Área | Avance comprobable hasta esta entrega | Estado |
 |---|---|---|
-| _Por definir_ | _Por definir_ | _Por definir_ |
+| Raspberry Pi | Preparación inicial del equipo y configuración para poder trabajar con él. | En proceso |
+| Conexión remota | Conexión a la Raspberry Pi mediante SSH. | Realizado |
+| Refrigeración | Instalación de un ventilador para ayudar a mantener la temperatura del equipo. | Realizado |
+| Estructura del proyecto | Organización inicial de la documentación y planificación en GitHub. | Realizado |
+| Captura de imágenes | Todavía no implementada; falta incorporar y probar la cámara. | Pendiente |
+| Detección de eventos | Todavía no implementada. | Pendiente |
+| Recolección de datos NASA / NOAA | Planificada, falta desarrollar la conexión y guardar los datos. | Pendiente |
+| Análisis estadístico | Planificado, falta implementar los cálculos con datos recopilados. | Pendiente |
+| Dashboard | Planificado, todavía no implementado. | Pendiente |
 
-> La organización del equipo aún está en definición.
+**Importante:** el proyecto sigue en desarrollo. En esta entrega se presenta el avance real de preparación del hardware y configuración inicial. No se considera implementada una función hasta que exista código y una prueba que lo demuestre.
+
+## Tecnologías y recursos
+
+| Recurso | Uso en el proyecto |
+|---|---|
+| Raspberry Pi 4 | Equipo principal para el observatorio. |
+| Raspberry Pi OS | Sistema operativo del equipo. |
+| SSH | Acceso remoto a la Raspberry Pi desde otro dispositivo. |
+| Ventilador | Apoyo para la refrigeración de la Raspberry Pi. |
+| Python 3 | Lenguaje previsto para el desarrollo del software. |
+| Git y GitHub | Control de versiones, documentación y seguimiento del proyecto. |
+
+Para las siguientes etapas se tiene previsto trabajar con OpenCV, pandas, NumPy, SciPy, Matplotlib y Streamlit. Estas herramientas forman parte de la planificación y no deben confundirse con módulos ya terminados.
+
+## Organización del equipo
+
+| Integrante | Responsabilidad registrada |
+|---|---|
+| Emanuel Flores Torrico | Hardware y captura. |
+| Jhenny Puma Velásquez | Investigación y desarrollo. |
+| Marcelo Andrés Gantier Rodríguez | Dashboard. |
+
+## Evidencias del avance
+
+Se cuenta con capturas del proceso de preparación y conexión de la Raspberry Pi, incluyendo los pasos de configuración por SSH y el trabajo realizado para instalar el ventilador.
+
+Las capturas se incorporarán al repositorio en la carpeta `docs/evidencias/`, organizadas por etapas y con una breve descripción para que se pueda revisar el procedimiento.
+
+> Las imágenes de evidencia deben corresponder a actividades realizadas por el equipo. No se utilizarán imágenes de ejemplo como si fueran pruebas del proyecto.
+
+## Estructura actual del repositorio
+
+```
+PEP3-2026-ANDCORE/
+├── ANDCORE/
+│   ├── PLANIFICACION/
+│   │   └── Gantt-ANDCORE-v1.jpeg
+│   ├── PRESENTACIONES/
+│   │   └── Presentacion-ANDCORE-v1..pdf
+│   └── PROYECTO/
+│       └── Documento-Proyecto-ANDCORE-v1.docx
+├── docs/
+│   └── evidencias/
+├── Emanuel-Flores.txt
+├── Jhenny-Puma.txt
+├── Marcelo-Gantier.txt
+├── LICENSE
+└── README.md
+```
+
+La estructura se irá ampliando a medida que se desarrollen los módulos de software.
+
+## Instalación y ejecución
+
+Por el momento, el avance de esta etapa corresponde a la preparación y configuración inicial de la Raspberry Pi. Todavía no existe una aplicación completa de ANDCORE que se pueda ejecutar desde un único comando.
+
+Cuando se incorporen los módulos de Python, se agregarán aquí los pasos de instalación de dependencias y ejecución de cada parte del sistema.
+
+## Funcionalidades que faltan desarrollar
+
+- Configurar e integrar la cámara para realizar capturas del cielo.
+- Crear el módulo de recolección de información de fuentes abiertas, como NASA y NOAA.
+- Guardar y organizar los datos obtenidos en archivos o una base de datos.
+- Desarrollar una primera versión de detección de eventos con OpenCV.
+- Aplicar análisis estadístico a los datos recopilados.
+- Crear el dashboard para mostrar los resultados.
+- Realizar pruebas y documentar los resultados obtenidos.
+
+## Fuentes previstas
+
+- NASA Open APIs: https://api.nasa.gov
+- NOAA Space Weather Prediction Center: https://www.swpc.noaa.gov
+
+Estas fuentes están consideradas para una etapa posterior de integración.
+
+## Estado general
+
+ANDCORE se encuentra en una etapa inicial de implementación. Ya se cuenta con la preparación básica de la Raspberry Pi, el acceso remoto mediante SSH, la instalación de un ventilador y la documentación de planificación del proyecto. El siguiente paso es continuar con la integración de la cámara y comenzar el desarrollo de los módulos de software.
 
 ---
-
-## ⚠️ Limitaciones conocidas
-
-- Las pruebas de campo dependen del clima nocturno.
-- La cámara es de bajo costo, así que su sensibilidad es limitada frente a la de equipos profesionales.
-- Con poco tiempo de captura, los datos propios serán una **muestra pequeña**; los resultados estadísticos deben leerse con ese cuidado.
-
----
-
-## 🙏 Agradecimientos y fuentes de datos
-
-- [NASA Open APIs (NeoWs)](https://api.nasa.gov)
-- [NOAA Space Weather Prediction Center](https://www.swpc.noaa.gov)
-- Universidad Privada Franz Tamayo — Ingeniería en Sistemas
-- Docente: Diego Patrick Cardenas Sejas
-
----
-
-## 📄 Licencia
-
--Por definir
+**Grupo ORION X · Unifranz · 2026**
