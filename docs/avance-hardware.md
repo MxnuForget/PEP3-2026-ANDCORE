@@ -6,28 +6,33 @@
 
 ## Trabajo realizado
 
-Durante esta etapa se comenzó con la preparación de la Raspberry Pi que se utilizará como equipo principal del proyecto. Se realizó la configuración inicial necesaria para acceder al dispositivo y trabajar con él de manera remota.
+En esta etapa me encargué de preparar la parte física y la configuración inicial de la Raspberry Pi que vamos a utilizar en ANDCORE. El equipo es una Raspberry Pi 4 Model B de 4 GB.
 
-También se estableció la conexión mediante SSH. Esto permite ingresar a la terminal de la Raspberry Pi desde otro equipo sin tener que conectar permanentemente un monitor, teclado y mouse al dispositivo.
+Primero trabajé en la preparación del almacenamiento con Raspberry Pi Imager y en dejar listo el sistema para comenzar a utilizar la placa. Después realicé las comprobaciones de red para localizar la Raspberry Pi y trabajar con ella desde mi Mac.
 
-Como parte del cuidado del hardware, se instaló un ventilador para ayudar a mantener una temperatura de funcionamiento adecuada y reducir la acumulación de calor durante el uso.
+También configuré el acceso remoto mediante SSH. De esta forma puedo entrar a la terminal de la Raspberry Pi desde la Mac y continuar con la configuración sin tener que usar siempre un monitor y teclado conectados directamente al equipo.
+
+Una vez dentro del sistema, instalé y comprobé las herramientas necesarias para comenzar a trabajar con Python. Se verificaron Python 3.13.5 y Git 2.47.3, además de los paquetes python3-venv, python3-pip y python3-dev.
+
+Después creé el entorno virtual .venv dentro de la carpeta ANDCORE y preparé una estructura inicial para separar las partes del proyecto: captura, dashboard, datos, estadística, procesamiento y pruebas.
+
+Por último, como parte del cuidado del hardware, realicé el montaje de un ventilador y coloqué disipadores para ayudar a controlar la temperatura de la Raspberry Pi durante su funcionamiento.
 
 ## Resultado de esta etapa
 
-- Se cuenta con la Raspberry Pi preparada para continuar con la configuración.
-- Se logró acceder al equipo mediante SSH.
-- Se incorporó un ventilador como apoyo para la refrigeración.
-- Se registró el procedimiento mediante capturas que serán organizadas en la carpeta de evidencias.
+- Raspberry Pi 4 Model B de 4 GB preparada para continuar con el proyecto.
+- Acceso remoto por SSH trabajado desde la Mac.
+- Python y Git instalados y comprobados.
+- Entorno virtual de Python creado y activado.
+- Carpetas iniciales de ANDCORE organizadas en la Raspberry Pi.
+- Ventilador y disipadores incorporados para apoyar la refrigeración.
 
-## Trabajo pendiente
+## Lo que sigue
 
-- Continuar con la configuración del entorno de desarrollo.
-- Integrar y probar la cámara para la captura del cielo.
-- Desarrollar los módulos de software para el procesamiento de información.
-- Realizar pruebas de funcionamiento y documentar sus resultados.
+El equipo continúa trabajando en el desarrollo del código Python y en la búsqueda de una cámara que sea compatible con la Raspberry Pi 4. Cuando se tenga la cámara, se podrá avanzar con las pruebas de captura y después con los módulos de procesamiento y análisis.
 
 ## Evidencias
 
-Las capturas del procedimiento se deben agregar en `docs/evidencias/`. Se recomienda incluir imágenes de la conexión SSH, acceso a la terminal, instalación del ventilador y pruebas realizadas.
+Las capturas del procedimiento se registran en la guía de [evidencias](evidencias/README.md). El detalle técnico de comandos, versiones y estructura está en [configuración inicial de Raspberry Pi](configuracion-raspberry-pi.md).
 
-**Nota:** este documento describe únicamente las tareas realizadas en esta etapa. No afirma que la captura astronómica ni el procesamiento de imágenes estén implementados.
+**Nota:** este avance corresponde a la preparación del hardware y del entorno. No afirma que la captura astronómica, la detección de eventos o el dashboard estén terminados.
