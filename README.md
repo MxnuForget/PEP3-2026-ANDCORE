@@ -1,48 +1,78 @@
 # ANDCORE 🌌
 ## Observatorio estadístico de eventos astronómicos visibles desde Cochabamba
 
-Proyecto de la materia de Probabilidad y Estadística — Ingeniería en Sistemas  
-Universidad Privada Franz Tamayo (Unifranz) · Cochabamba, Bolivia · 2026  
-Grupo: **ORION X**
+Proyecto de Probabilidad y Estadística — Ingeniería en Sistemas  
+Universidad Privada Franz Tamayo (Unifranz), Cochabamba · 2026  
+**Grupo: ORION X**
 
----
+## ¿De qué trata ANDCORE?
 
-## ¿De qué trata el proyecto?
+ANDCORE es una propuesta de observatorio para estudiar eventos astronómicos que puedan observarse desde Cochabamba. La idea es reunir información del cielo, consultar fuentes abiertas y utilizar herramientas de programación y estadística para analizar los datos.
 
-ANDCORE busca desarrollar un observatorio que permita estudiar eventos astronómicos visibles desde Cochabamba. La idea es reunir información del cielo, consultar datos de fuentes abiertas y utilizar herramientas estadísticas para analizar las condiciones de observación.
+El proyecto se está desarrollando por etapas. En este momento el trabajo se concentró en preparar la Raspberry Pi, dejar listo el acceso remoto y organizar el entorno inicial para continuar con Python. La captura del cielo y el análisis de eventos todavía dependen de integrar y probar una cámara compatible.
 
-A futuro, el proyecto contempla utilizar una Raspberry Pi con una cámara, procesamiento de imágenes y un panel donde se puedan consultar los resultados. El desarrollo se realizará por etapas, por lo que no todas esas funciones están implementadas todavía.
+## Avance actual
 
-## Avance actual de implementación
+| Área | Trabajo realizado / estado |
+|---|---|
+| Hardware | Raspberry Pi 4 Model B de 4 GB identificada y preparada para el proyecto. |
+| Sistema operativo | Preparación del almacenamiento mediante Raspberry Pi Imager. Las capturas muestran el proceso de escritura y verificación. |
+| Red y acceso remoto | Se trabajó en la conexión de red y el acceso remoto por SSH. La terminal de la Raspberry muestra la IP local 192.168.20.17. |
+| Refrigeración | Se realizó el montaje del ventilador y se colocaron disipadores para ayudar a controlar el calor del equipo. |
+| Python | Python 3.13.5 instalado y comprobado desde la terminal. |
+| Entorno virtual | Se creó y activó el entorno .venv dentro de la carpeta de trabajo ANDCORE. |
+| Herramientas | Git 2.47.3, python3-venv, python3-pip y python3-dev aparecen instalados en las capturas. |
+| Estructura inicial | Se organizaron carpetas para captura, dashboard, datos, estadística, procesamiento y pruebas. |
+| Cámara | En búsqueda de un modelo compatible con la Raspberry Pi 4. |
+| Software del observatorio | En desarrollo. Todavía no se presenta como terminado el procesamiento, la detección, el análisis ni el dashboard. |
 
-En esta etapa se trabajó principalmente en la preparación del equipo Raspberry Pi y en la organización inicial del proyecto.
+**Aclaración:** la preparación del entorno y las carpetas es una base de trabajo. No significa que los módulos de captura, detección o análisis ya estén implementados.
 
-| Área | Avance comprobable hasta esta entrega | Estado |
-|---|---|---|
-| Raspberry Pi | Preparación inicial del equipo y configuración para poder trabajar con él. | En proceso |
-| Conexión remota | Conexión a la Raspberry Pi mediante SSH. | Realizado |
-| Refrigeración | Instalación de un ventilador para ayudar a mantener la temperatura del equipo. | Realizado |
-| Estructura del proyecto | Organización inicial de la documentación y planificación en GitHub. | Realizado |
-| Captura de imágenes | Todavía no implementada; falta incorporar y probar la cámara. | Pendiente |
-| Detección de eventos | Todavía no implementada. | Pendiente |
-| Recolección de datos NASA / NOAA | Planificada, falta desarrollar la conexión y guardar los datos. | Pendiente |
-| Análisis estadístico | Planificado, falta implementar los cálculos con datos recopilados. | Pendiente |
-| Dashboard | Planificado, todavía no implementado. | Pendiente |
+## Preparación de la Raspberry Pi
 
-**Importante:** el proyecto sigue en desarrollo. En esta entrega se presenta el avance real de preparación del hardware y configuración inicial. No se considera implementada una función hasta que exista código y una prueba que lo demuestre.
+El trabajo de hardware y configuración inicial registrado por Emanuel Flores Torrico incluye:
+
+1. Preparación de la Raspberry Pi 4 Model B de 4 GB.
+2. Preparación del almacenamiento con Raspberry Pi Imager.
+3. Configuración de red y acceso remoto mediante SSH.
+4. Comprobación de la dirección IP local desde la terminal de la Raspberry Pi.
+5. Instalación y comprobación de Python y herramientas necesarias para trabajar.
+6. Creación y activación de un entorno virtual de Python.
+7. Organización de las carpetas iniciales del proyecto.
+8. Montaje del ventilador y colocación de disipadores para apoyar la refrigeración.
+
+El detalle de comandos, versiones y estructura observada está en [Configuración inicial de Raspberry Pi](docs/configuracion-raspberry-pi.md). El registro del trabajo de hardware está en [Avance de hardware](docs/avance-hardware.md).
+
+## Estructura inicial creada en la Raspberry Pi
+
+La captura de la terminal muestra esta organización dentro de ~/ANDCORE:
+
+    ANDCORE/
+    ├── captura/
+    ├── dashboard/
+    ├── datos/
+    ├── estadistica/
+    ├── main.py
+    ├── procesamiento/
+    ├── pruebas/
+    ├── README.md
+    ├── requirements.txt
+    └── .venv/
+
+La carpeta .venv corresponde al entorno virtual local. No se debe subir al repositorio; se puede volver a crear siguiendo la documentación. Las carpetas representan la organización inicial y se irán completando conforme avance el desarrollo.
 
 ## Tecnologías y recursos
 
-| Recurso | Uso en el proyecto |
+| Recurso | Uso |
 |---|---|
-| Raspberry Pi 4 | Equipo principal para el observatorio. |
-| Raspberry Pi OS | Sistema operativo del equipo. |
-| SSH | Acceso remoto a la Raspberry Pi desde otro dispositivo. |
-| Ventilador | Apoyo para la refrigeración de la Raspberry Pi. |
-| Python 3 | Lenguaje previsto para el desarrollo del software. |
-| Git y GitHub | Control de versiones, documentación y seguimiento del proyecto. |
+| Raspberry Pi 4 Model B (4 GB) | Equipo principal del observatorio. |
+| Raspberry Pi OS | Sistema operativo preparado para la placa. |
+| SSH | Acceso remoto a la terminal. |
+| Python 3.13.5 | Entorno de programación instalado. |
+| Git 2.47.3 y GitHub | Control de versiones y documentación. |
+| Ventilador y disipadores | Apoyo para la refrigeración. |
 
-Para las siguientes etapas se tiene previsto trabajar con OpenCV, pandas, NumPy, SciPy, Matplotlib y Streamlit. Estas herramientas forman parte de la planificación y no deben confundirse con módulos ya terminados.
+Para etapas posteriores se tiene previsto evaluar OpenCV, NumPy, pandas, SciPy, Matplotlib y Streamlit. También se considera consultar datos abiertos de NASA y NOAA. Estas herramientas e integraciones forman parte de la planificación y no se deben confundir con funciones ya terminadas.
 
 ## Organización del equipo
 
@@ -52,62 +82,35 @@ Para las siguientes etapas se tiene previsto trabajar con OpenCV, pandas, NumPy,
 | Jhenny Puma Velásquez | Investigación y desarrollo. |
 | Marcelo Andrés Gantier Rodríguez | Dashboard. |
 
-## Evidencias del avance
+El grupo continúa avanzando en la parte de programación en Python y en la búsqueda de una cámara que sea compatible con la Raspberry Pi 4.
 
-Se cuenta con capturas del proceso de preparación y conexión de la Raspberry Pi, incluyendo los pasos de configuración por SSH y el trabajo realizado para instalar el ventilador.
+## Evidencias
 
-Las capturas se incorporarán al repositorio en la carpeta `docs/evidencias/`, organizadas por etapas y con una breve descripción para que se pueda revisar el procedimiento.
+Se recibieron 10 capturas del proceso realizado: placa, preparación del almacenamiento, comprobaciones de red, terminal de la Raspberry, instalación de herramientas, entorno virtual, estructura de carpetas y montaje de refrigeración.
 
-> Las imágenes de evidencia deben corresponder a actividades realizadas por el equipo. No se utilizarán imágenes de ejemplo como si fueran pruebas del proyecto.
-
-## Estructura actual del repositorio
-
-```
-PEP3-2026-ANDCORE/
-├── ANDCORE/
-│   ├── PLANIFICACION/
-│   │   └── Gantt-ANDCORE-v1.jpeg
-│   ├── PRESENTACIONES/
-│   │   └── Presentacion-ANDCORE-v1..pdf
-│   └── PROYECTO/
-│       └── Documento-Proyecto-ANDCORE-v1.docx
-├── docs/
-│   └── evidencias/
-├── Emanuel-Flores.txt
-├── Jhenny-Puma.txt
-├── Marcelo-Gantier.txt
-├── LICENSE
-└── README.md
-```
-
-La estructura se irá ampliando a medida que se desarrollen los módulos de software.
+La guía para incorporarlas al repositorio está en [docs/evidencias](docs/evidencias/README.md). Las capturas deben conservarse como evidencia original y agregarse en esa carpeta; no se deben reemplazar por imágenes ilustrativas.
 
 ## Instalación y ejecución
 
-Por el momento, el avance de esta etapa corresponde a la preparación y configuración inicial de la Raspberry Pi. Todavía no existe una aplicación completa de ANDCORE que se pueda ejecutar desde un único comando.
+Por ahora no existe una aplicación completa de ANDCORE lista para ejecutarse. Esta etapa corresponde a la preparación del equipo y del entorno de trabajo. Los pasos registrados para preparar Python y las carpetas están en la documentación técnica.
 
-Cuando se incorporen los módulos de Python, se agregarán aquí los pasos de instalación de dependencias y ejecución de cada parte del sistema.
+Cuando se implementen los módulos, se actualizará esta sección con las dependencias reales, comandos de ejecución y pruebas correspondientes.
 
-## Funcionalidades que faltan desarrollar
+## Próximas tareas
 
-- Configurar e integrar la cámara para realizar capturas del cielo.
-- Crear el módulo de recolección de información de fuentes abiertas, como NASA y NOAA.
-- Guardar y organizar los datos obtenidos en archivos o una base de datos.
-- Desarrollar una primera versión de detección de eventos con OpenCV.
-- Aplicar análisis estadístico a los datos recopilados.
-- Crear el dashboard para mostrar los resultados.
-- Realizar pruebas y documentar los resultados obtenidos.
+- Terminar la selección de una cámara compatible y realizar pruebas de captura.
+- Desarrollar el módulo de captura de imágenes.
+- Implementar la consulta y almacenamiento de información de fuentes abiertas como NASA y NOAA.
+- Desarrollar el procesamiento de imágenes y la detección de posibles eventos.
+- Aplicar el análisis estadístico a datos reales o de prueba, dejando claro su origen.
+- Crear el dashboard y documentar pruebas de funcionamiento.
 
 ## Fuentes previstas
 
 - NASA Open APIs: https://api.nasa.gov
 - NOAA Space Weather Prediction Center: https://www.swpc.noaa.gov
 
-Estas fuentes están consideradas para una etapa posterior de integración.
-
-## Estado general
-
-ANDCORE se encuentra en una etapa inicial de implementación. Ya se cuenta con la preparación básica de la Raspberry Pi, el acceso remoto mediante SSH, la instalación de un ventilador y la documentación de planificación del proyecto. El siguiente paso es continuar con la integración de la cámara y comenzar el desarrollo de los módulos de software.
+**Estado general:** ANDCORE se encuentra en una etapa inicial. Ya se trabajó en la preparación de la Raspberry Pi, el acceso remoto, el entorno Python, la estructura de carpetas y la refrigeración. El equipo continúa con el desarrollo del software y la búsqueda de la cámara.
 
 ---
 **Grupo ORION X · Unifranz · 2026**
