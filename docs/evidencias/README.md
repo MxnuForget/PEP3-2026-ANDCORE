@@ -1,22 +1,24 @@
-# Evidencias de implementación
+# Evidencias del trabajo con Raspberry Pi
 
-En esta carpeta se reunirán las capturas reales del trabajo realizado con la Raspberry Pi para ANDCORE.
+Este apartado organiza las 10 capturas compartidas del proceso de preparación de ANDCORE. Se recomienda conservar los archivos originales y subirlos a esta carpeta con los nombres sugeridos abajo.
 
-## Cómo organizar las capturas
+| Archivo sugerido | Qué demuestra |
+|---|---|
+| 01-raspberry-pi-4-model-b.jpeg | Placa Raspberry Pi 4 Model B antes de la preparación. |
+| 02-raspberry-pi-imager-verificacion.jpeg | Raspberry Pi Imager v2.0.12 verificando la escritura del sistema en el almacenamiento. |
+| 03-busqueda-en-red-desde-mac.jpeg | Primeras comprobaciones de red desde macOS y búsqueda de la Raspberry Pi. |
+| 04-conexion-y-direccion-ip.jpeg | Raspberry Pi conectada y terminal con la dirección IP local 192.168.20.17. |
+| 05-python-git-y-recursos.jpeg | Instalación/comprobación de paquetes, Python 3.13.5, Git 2.47.3 y recursos del equipo. |
+| 06-sistema-y-arquitectura.jpeg | Información del sistema Debian 13 Trixie y arquitectura arm64. |
+| 07-estructura-inicial-andcore.jpeg | Carpetas iniciales y archivos creados dentro de ~/ANDCORE. |
+| 08-montaje-refrigeracion-detalle.jpeg | Detalle de conexiones, ventilador y disipadores. |
+| 09-montaje-refrigeracion.jpeg | Vista general del montaje de refrigeración en la Raspberry Pi. |
+| 10-placa-con-refrigeracion.jpeg | Otra vista de la placa y el cableado del montaje. |
 
-Se recomienda guardar las imágenes en orden, usando nombres fáciles de identificar:
+## Cómo agregarlas a GitHub
 
-- `01-preparacion-raspberry.png`
-- `02-configuracion-red.png`
-- `03-conexion-ssh.png`
-- `04-acceso-terminal.png`
-- `05-instalacion-ventilador.png`
-- `06-prueba-ventilador.png`
+Colocar las diez imágenes originales dentro de esta carpeta (docs/evidencias/) usando los nombres de la tabla. Después de subirlas, se pueden mostrar en esta página con enlaces o imágenes Markdown.
 
-Los nombres son una sugerencia: deben ajustarse a las capturas que realmente tenga el equipo.
+No subir contraseñas, claves privadas ni archivos de configuración que contengan credenciales. La IP mostrada en las capturas es una dirección privada de la red local.
 
-Cada imagen debe mostrar una actividad que se haya realizado. Si una captura no corresponde a alguno de estos pasos, no es necesario incluirla. Evitar publicar contraseñas, claves privadas, direcciones IP públicas u otros datos de acceso.
-
-## Qué debe mostrar la evidencia
-
-Cuando sea posible, acompañar cada captura con una breve descripción: qué se hizo, para qué se hizo y cuál fue el resultado.
+**Importante:** la captura de Raspberry Pi Imager muestra una verificación en curso. Se describe como evidencia del proceso, no como una confirmación visual de que esa pantalla terminó.
